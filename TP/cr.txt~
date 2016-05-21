@@ -1,0 +1,5 @@
+ App.java affiche helloworld.
+
+App.class se trouve dans Hanoi/target/classes/tc/elp/java/datastructures
+
+on peut executer cette classe car le nom du package est traduit en arborescence et donc on a bien le chemin vers App.class

@@ -1,0 +1,24 @@
+(let [s (new java.util.HashSet)]
+	(doto s
+		(.add 1)
+		(.add 2)
+		(.add 3))
+	(println (System/currentTimeMillis))
+  	(println (.contains s 1)
+ 	(println (.contains s 5) )))
+ 	
+ 
+ (let [l (new java.util.ArrayList)]
+  (doto l
+    (.add 1)
+    (.add 2)
+    (.add 3))
+  (println (map inc l)))
+  
+
+(let [output (new java.util.zip.GZIPOutputStream (new java.io.FileOutputStream "out.gz"))]
+	(doto output
+		(.write(.getBytes "Hello world" ))
+		(.close)))
+		
+		

@@ -1,0 +1,15 @@
+package tc.elp.java.datastructures;
+
+interface Stack{
+	
+	boolean empty();//indique si la pile est vide
+	
+	int top()throws EmptyStackException;// renvoi element du dessus
+
+	void push(int aValue);//ajoute un élément au-dessus
+
+
+	void pop() throws EmptyStackException;//supprime l'élément du dessus
+
+
+}

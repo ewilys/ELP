@@ -1,0 +1,29 @@
+
+
+import java.net.*;
+import java.io.*;
+
+
+public class Client{
+	
+	public static void main (String[] args) throws IOException{
+	
+		
+		Socket socket=new Socket ("localhost", 8080);
+
+		PrintWriter out = new PrintWriter( new OutputStreamWriter( socket.getOutputStream() ), true );
+		out.println("bou");
+		/*while(line != null){
+		System.out.println("ligne recue : "+line);
+		if (line.equals("stop")){
+			line=null;
+			
+			System.out.println("fin");
+		}
+		else{line=in.readLine();}
+		
+
+		}*/
+	}
+
+}

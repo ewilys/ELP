@@ -1,0 +1,68 @@
+import javax.swing.*;   
+import java.awt.*;
+
+
+public class Calculatrice implements Runnable {
+    @Override 
+    public void run() {
+        //Create the window
+        JFrame f = new JFrame("Calculatrice");
+	//Set the behavior for when the window is closed
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	//set the jpanel with border layout
+	JPanel firstPan=new JPanel( new BorderLayout());
+	JPanel scndPan=new JPanel(new GridLayout(4,3));
+	
+	// set processeur
+	Processeur p=new Processeur();
+
+        //Add a JTextField
+	JTextField text=new JTextField("");
+        firstPan.add(text, BorderLayout.PAGE_START);
+	//Add a JLabel
+        firstPan.add(new JLabel("La fameuse calculatrice en Java"), BorderLayout.PAGE_END);
+	//Add a JButton
+	JButton clear=new JButton("c");
+	clear.addActionListener(new ButtonClear(p,text));
+       	firstPan.add(clear, BorderLayout.LINE_START);
+	
+	//Add a JButton
+	JButton equal=new JButton("=");
+	equal.addActionListener(new ButtonEqual(p,text));
+        firstPan.add(equal, BorderLayout.LINE_END);
+	
+	//Add a JButton
+	JButton[] chiffres=new JButton[12];
+	for(int i =0;i<10;i++){
+		chiffres[i]=new JButton(""+i);
+		chiffres[i].addActionListener(new ButtonNumber(p,text));
+	}
+
+	for(int i =9;i>=0;i--){
+		scndPan.add(chiffres[i]);
+	}
+	
+	chiffres[10]=new JButton("+");
+	chiffres[10].addActionListener(new ButtonPlus(p,text));		
+	chiffres[11]=new JButton("-");
+	chiffres[11].addActionListener(new ButtonMinus(p,text));
+	scndPan.add(chiffres[10]);
+	
+	scndPan.add(chiffres[11]);
+       	
+	//Add scndPan to firstPan
+	firstPan.add(scndPan,BorderLayout.CENTER);
+	
+ 	f.setContentPane(firstPan);
+
+        //Set the window size from its components size 
+        f.pack();
+        //By default, the window is not visible; make it visible
+        f.setVisible(true);
+    }
+    public static void main(String[] args) {
+	//Run the application at the correct time in the event queue
+        SwingUtilities.invokeLater( new Calculatrice() );  
+    }
+}

@@ -1,0 +1,28 @@
+import clojure.java.api.Clojure;
+import clojure.lang.IFn;
+
+public class CdansJ{
+
+	public static void main(String []args){
+	
+		IFn map = Clojure.var("clojure.core", "map");
+ 		IFn inc = Clojure.var("clojure.core", "inc");
+ 		IFn str = Clojure.var("clojure.core", "str");
+ 		
+ 		
+ 		System.out.println(str.invoke(map.invoke(inc,Clojure.read("(list 1 2 3 4 5) ")));
+		
+		IFn require = Clojure.var("clojure.core", "require");
+		require.invoke(Clojure.read("Fibonacci"));//besoin d'invoquer le name space du même nom que le fichier.clj
+		IFn fib = Clojure.var("Fibonacci", "fib");
+		System.out.println(str.invoke(fib.invoke(0)));
+		System.out.println(str.invoke(fib.invoke(1)));
+		System.out.println(str.invoke(fib.invoke(2)));
+		System.out.println(str.invoke(fib.invoke(10)));
+		
+		
+	}
+	
+	/*public changeToIfn( File */
+
+}
